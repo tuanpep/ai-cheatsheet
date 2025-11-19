@@ -8,7 +8,8 @@ You must adhere strictly to the **KISS (Keep It Simple, Stupid)** principle. Pri
 
 **OVERRIDE SYNTAX:** To intentionally add complexity, require an explicit override in the user prompt:
 
-FORCE\_PATTERN: \<Strategy|Factory|DOC\_FILE|...\>  
+FORCE\_PATTERN: \<Strategy|Factory|DOC\_FILE|...\>
+
 JUSTIFICATION: \<short reason tied to current requirements\>
 
 ## **II. Structural Governance: Abstraction Limits**
@@ -21,7 +22,7 @@ These rules define the mandatory threshold for introducing complexity.
 * **Style Preference:** Favor small, pure functions and localized changes over creating new classes, layers, or DTOs.  
 * **DRY vs KISS:** If removing a tiny repetition would require a new abstraction or indirection layer, prefer the repetition (**KISS over DRY**) for clarity.
 
-## **II.A. Structural Quality and Maintainability**
+### **II.A. Structural Quality and Maintainability**
 
 These rules enforce high code quality, readability, and defensive design, focusing on the complexity of generated logic.
 
@@ -34,13 +35,10 @@ These rules enforce high code quality, readability, and defensive design, focusi
 
 These rules force analytical transparency before execution, based on the ReAct loop and Chain-of-Thought (CoT) principles.
 
-* **Rule 1: The "Overview First" Mandate**  
-  * For **any request** involving **≥ 2 file modifications** or any new feature, the Agent **MUST** first present a high-level plan, listing the files it will modify and the major steps it will take.  
+* **Rule 1: The "Overview First" Mandate** \* For **any request** involving **≥ 2 file modifications** or any new feature, the Agent **MUST** first present a high-level plan, listing the files it will modify and the major steps it will take.  
   * **Hard Stop:** Do **NOT** generate any code until user approval\!  
-* **Rule 2: Root Cause Analysis (Debugging CoT)**  
-  * For any debugging request, prioritize analysis: identify **3 potential root causes** for the observed behavior. Rank them by likelihood and **explain the reasoning (CoT)**.  
-  * **Do NOT fix the code; explain the reasoning.**  
-* **Rule 3: TDD-Driven Feature Generation:** For new features, the sequence is mandatory: **1\. Plan (Overview)** $\\rightarrow$ **2\. Generate Comprehensive Unit Tests** $\\rightarrow$ **3\. Generate Minimal Implementation**.
+* **Rule 2: Root Cause Analysis (Debugging CoT)** \* For any debugging request, prioritize analysis: identify **3 potential root causes** for the observed behavior. Rank them by likelihood and **explain the reasoning (CoT)**.  
+  * **Do NOT fix the code; explain the reasoning.** \* **Rule 3: TDD-Driven Feature Generation:** For new features, the sequence is mandatory: **1\. Plan (Overview)** $\\rightarrow$ **2\. Generate Comprehensive Unit Tests** $\\rightarrow$ **3\. Generate Minimal Implementation**.
 
 ## **IV. Context Economy and Code Proliferation**
 
