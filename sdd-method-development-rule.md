@@ -446,6 +446,47 @@ After all tasks are complete, perform a comprehensive "Critic Pass".
 - Suggest better architectural paths during planning, but wait for confirmation
 - Ask specific questions rather than making assumptions when uncertain
 
+## Decision Shortcuts & Checkpoints
+
+Quick decision criteria for each stop point. Use the table below for fast reference.
+
+### Approval/Rejection Signals
+
+**✅ Approval Keywords (Auto-Proceed):**
+- "approved", "approve", "looks good", "sounds good"
+- "proceed", "continue", "go ahead", "start", "implement"
+- "yes", "yep", "y"
+- Thumbs up / 👍 / ✅ emoji
+
+**❌ Rejection Keywords (Pause & Revise):**
+- "reject", "not approved", "needs changes", "revise"
+- "not quite right", "rethink", "needs adjustment"
+- "no", "nope", "n"
+- Specific feedback indicating major changes
+
+### Decision Matrix
+
+| Checkpoint | ✅ Proceed If | ⏸️ Pause If | 🔄 Revise If |
+|------------|--------------|-------------|--------------|
+| **Phase 1 → 2** | Deliverables complete, no blocking issues | Missing critical info, breaking changes unacknowledged | N/A (return to Phase 1) |
+| **Phase 2 → 3** | User approves spec | User rejects or requests major changes | User provides specific feedback on sections |
+| **Phase 3 → 4** | User approves plan | User rejects or requests major task changes | User provides specific feedback on tasks |
+| **Phase 4 Mid** | Minor change (current task only) | Major change (multiple tasks, architecture) | Return to Phase 2 (spec) or Phase 3 (plan) |
+| **Phase 4 → 5** | All tasks completed | Tasks incomplete or blocked | N/A (fix issues first) |
+| **Phase 5 → Done** | Green status (all checks pass) | Yellow/Red status (issues found) | Fix issues, re-verify |
+
+### Quick Rules
+
+1. **Phase 2 & 3:** Always wait for explicit approval (never auto-proceed)
+2. **Phase 4 Mid:** 
+   - Minor change (single file/task) → Continue, document inline
+   - Major change (architecture/spec) → Pause, return to appropriate phase
+3. **Silent Approval:**
+   - Trivial: Proceed after brief acknowledgment
+   - Small: May proceed if clear requirements (document assumption)
+   - Medium/Large: **Always wait for explicit approval**
+4. **Emergency Override:** Only if user explicitly says "skip approval" (document exception)
+
 ## Plan Folder Naming Convention
 
 **Format:** `DATETIME_SHORTNAME`
