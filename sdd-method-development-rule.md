@@ -384,33 +384,45 @@ After all tasks are complete, perform a comprehensive "Critic Pass".
 
 **Verification Checklist:**
 
-1. **Spec Compliance:**
+1. **Error Verification & Fix (Basic Checks):**
+   - Run linter/static analysis tools and fix all errors
+   - Run type checking (TypeScript/Go) and resolve all type errors
+   - Verify build compiles successfully
+   - Execute test suites and fix any failing tests
+   - Check for runtime errors in logs (if applicable)
+   - **Iterate:** Re-run these basic checks after each fix to ensure no regressions
+   - Continue until all basic errors are resolved or explicitly documented as acceptable
+   - **Note:** Complete this step before proceeding to detailed verification checks
+
+2. **Spec Compliance:**
    - Compare final code against the approved spec
    - Verify all success criteria are met
    - Check that scope boundaries were respected
 
-2. **Code Quality Audit:**
+3. **Code Quality Audit:**
    - Check for "hallucinated" dependencies (packages/files that don't exist)
    - Verify no missing edge cases
    - Ensure error handling is comprehensive
    - Review for security vulnerabilities
 
-3. **Testing Verification:**
+4. **Testing Verification (Detailed):**
    - Confirm tests were written as specified
-   - Verify tests pass
-   - Check test coverage (if applicable)
+   - Verify all tests pass (should already pass from step 1, but double-check)
+   - Check test coverage meets requirements (if applicable)
+   - Review test quality and completeness
 
-4. **Documentation Check:**
+5. **Documentation Check:**
    - README updated (if required)
    - Code comments added where needed
    - API docs updated (if applicable)
 
-5. **Integration Check:**
+6. **Integration Check:**
    - Verify no breaking changes to dependent code
    - Check service interactions (for microservices)
-   - Confirm build/test pipelines pass
+   - Confirm build/test pipelines pass (should already pass from step 1, but verify in context)
+   - **If issues found in steps 2-6:** Return to step 1 to fix, then re-verify affected steps
 
-6. **Status Report:**
+7. **Status Report:**
    Provide a color-coded status:
    - **🟢 Green:** All criteria met, production-ready
    - **🟡 Yellow:** Minor issues or documentation gaps, functional but needs polish
